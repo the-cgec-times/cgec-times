@@ -7,7 +7,7 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 
-const news_interval = "jul 2025 to Aug 2025";
+const news_interval = "3rd sem. syllabus";
 
 const importantLinks = [
   { id: 1, file: "/news/sem3.pdf" },
