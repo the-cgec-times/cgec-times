@@ -103,7 +103,7 @@
 .category-heading {
   font-family: 'Ubuntu', sans-serif;
   font-size: 1.8rem;
-  color: #f1d9e8;
+  color: #000000;
   margin: 30px 0 20px;
   padding-bottom: 10px;
   position: relative;
@@ -112,7 +112,7 @@
   border-radius: 10px;
   display: flex;
   align-items: center;
-  background-color: #003dcc;
+  background: linear-gradient(90deg, #f991d3, #10b4ae);
   justify-content: center;
 }
 
