@@ -1,0 +1,110 @@
+
+
+.committees-container {
+    animation: fadeIn 0.6s ease-out;
+}
+
+.committee-header {
+    border-radius: 20px;
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.committee-header:hover {
+    transform: translateY(-5px);
+}
+
+.committee-icon {
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    transition: all 0.4s ease;
+}
+
+.committee-header:hover .committee-icon {
+    transform: scale(1.1) rotate(10deg);
+}
+
+
+.card {
+    border-radius: 15px !important;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1) !important;
+}
+
+
+.member-card {
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border-left: 5px solid #1e3c72 !important;
+}
+
+.member-card:hover {
+    background-color: #ffffff !important;
+    transform: translateX(10px);
+}
+
+.member-info h6 {
+    color: #333;
+    font-size: 1.1rem;
+}
+
+
+.list-group-item {
+    background: transparent;
+    padding-left: 0;
+    font-size: 0.95rem;
+    color: #555;
+    line-height: 1.6;
+}
+
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+@media (max-width: 768px) {
+    .committee-header {
+        padding: 2rem !important;
+        text-align: center;
+    }
+    
+    .committee-header .d-flex {
+        flex-direction: column;
+    }
+
+    .committee-icon {
+        margin: 0 auto;
+    }
+
+    .committees-container {
+        margin-top: 130px !important; 
+    }
+}
+
+
+h3 {
+    font-weight: 700;
+    position: relative;
+    padding-bottom: 10px;
+}
+
+h3::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 3px;
+    background: #2a5298;
+    border-radius: 2px;
+}

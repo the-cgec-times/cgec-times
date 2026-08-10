@@ -1,0 +1,123 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap');
+
+.clubs-outer-wrapper {
+    font-family: 'Outfit', sans-serif;
+}
+
+.club-card-premium {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    background: white;
+    border: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.club-card-premium:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 1.5rem 3rem rgba(0, 0, 0, 0.1) !important;
+}
+
+
+.admin-actions {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    z-index: 999; 
+    display: flex;
+    gap: 8px;
+}
+
+.admin-actions .btn {
+    width: 35px;
+    height: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50% !important;
+    border: none;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, background 0.2s ease;
+}
+
+.admin-actions .btn:hover {
+    transform: scale(1.1);
+}
+
+.custom-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.75);
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(8px);
+    padding: 20px;
+}
+
+.modal-content-wrapper {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+    width: 100%;
+    max-width: 500px;
+    animation: modalPop 0.3s ease-out;
+}
+
+.modal-content-wrapper input,
+.modal-content-wrapper textarea,
+.modal-content-wrapper select {
+    border: 1px solid #e2e8f0;
+    padding: 12px 15px;
+    border-radius: 12px;
+    font-size: 0.95rem;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.modal-content-wrapper input:focus,
+.modal-content-wrapper textarea:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 4px rgba(13, 110, 253, 0.1);
+    outline: none;
+}
+
+.hover-primary:hover {
+    color: #0d6efd !important;
+}
+
+.explore-link {
+    transition: transform 0.3s ease;
+    display: inline-block;
+}
+
+.club-card-premium:hover .explore-link {
+    transform: translateX(5px);
+}
+
+.line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;  
+    overflow: hidden;
+    min-height: 4.5rem;
+}
+
+.tracking-tight {
+    letter-spacing: -1px;
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.9); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .display-4 {
+        font-size: 2.2rem;
+    }
+    .modal-content-wrapper {
+        padding: 20px;
+    }
+}

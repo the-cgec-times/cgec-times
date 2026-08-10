@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;900&display=swap');
+
+.fest-gallery-wrapper {
+    background: radial-gradient(circle at 10% 20%, rgb(0, 0, 0) 0%, rgb(30, 39, 107) 90.2%);
+    font-family: 'Outfit', sans-serif;
+    min-height: 100vh;
+}
+
+.navbar-spacer {
+    padding-top: 100px !important;
+}
+
+.fw-black { font-weight: 900 !important; }
+
+.main-title {
+    letter-spacing: -3px;
+    background: linear-gradient(to right, #ffffff 20%, #a29bfe 80%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.filter-pill {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #fff;
+    padding: 10px 28px;
+    border-radius: 50px;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(8px);
+}
+
+.filter-pill:hover, .filter-pill.active {
+    background: #fff;
+    color: #000;
+    transform: translateY(-3px);
+}
+
+.modern-gallery-card {
+    position: relative;
+    border-radius: 28px;
+    overflow: hidden;
+    height: 480px;
+    background: #1a1a1a;
+}
+
+.card-img-modern {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 1s ease;
+}
+
+.modern-gallery-card:hover .card-img-modern {
+    transform: scale(1.1);
+}
+
+.card-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.category-tag-modern {
+    position: absolute;
+    top: 25px;
+    left: 25px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    color: #fff;
+    padding: 6px 18px;
+    border-radius: 50px;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.btn-view-modern {
+    background: transparent;
+    border: 1.5px solid rgba(255, 255, 255, 0.4);
+    color: #fff;
+    padding: 8px 22px;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-view-modern:hover {
+    background: #fff;
+    color: #000;
+}
+
+.custom-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.9);
+    z-index: 99999 !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    backdrop-filter: blur(10px);
+    padding: 20px;
+}
+
+.modal-content-wrapper {
+    width: 95%;
+    max-width: 1100px;
+    height: 85vh;
+    background: #ffffff;
+    border-radius: 30px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.photo-grid-scroll {
+    overflow-y: auto;
+    flex-grow: 1;
+}
+
+@keyframes modalSlideUp {
+    from { transform: translateY(50px); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+
+@media (max-width: 768px) {
+    .modern-gallery-card { height: 400px; }
+    .display-2 { font-size: 2.2rem; }
+    .navbar-spacer { padding-top: 80px !important; }
+}

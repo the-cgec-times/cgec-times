@@ -1,0 +1,29 @@
+.login-wrapper, .signup-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  padding-top: 100px;
+  padding-bottom: 50px;
+  background: #f8f9fa;
+}
+
+@media (min-width: 992px) {
+  .login-wrapper, .signup-wrapper {
+    padding-top: 130px; 
+  }
+}
+
+.form-control:focus {
+  background-color: #fff !important;
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.1) !important;
+  border: 1px solid #0d6efd !important;
+}
+
+.card {
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-5px);
+}

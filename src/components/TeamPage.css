@@ -1,0 +1,195 @@
+.team-page {
+    background: #f8f9fb;
+}
+
+/* HERO */
+.team-hero {
+    text-align: center;
+    padding: 60px 20px 30px;
+    position: relative;
+}
+
+.team-hero h1 {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #222;
+}
+
+.team-hero p {
+    color: #666;
+    margin-top: 10px;
+}
+
+/* ADD BUTTON */
+.add-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    background: #0d6efd;
+    color: white;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.add-btn:hover {
+    background: #0b5ed7;
+}
+
+/* TEAM CARD */
+.team-card {
+    background: white;
+    border-radius: 20px;
+    overflow: hidden;
+    transition: 0.4s;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    position: relative;
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+}
+
+/* ADMIN BUTTONS */
+.admin-controls {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    display: flex;
+    gap: 8px;
+    z-index: 10;
+}
+
+.admin-controls button {
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 50%;
+    background: white;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.admin-controls button:hover {
+    transform: scale(1.1);
+    background: #0d6efd;
+    color: white;
+}
+
+/* IMAGE */
+.team-image {
+    height: 300px;
+    overflow: hidden;
+}
+
+.team-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.5s;
+}
+
+.team-card:hover img {
+    transform: scale(1.1);
+}
+
+/* INFO */
+.team-info {
+    padding: 20px;
+    text-align: center;
+}
+
+.team-info h5 {
+    font-weight: 700;
+    margin-bottom: 5px;
+}
+
+.role {
+    color: #0d6efd;
+    font-weight: 600;
+}
+
+.dept {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* SWIPER */
+.swiper-button-next,
+.swiper-button-prev {
+    color: #0d6efd;
+    transform: scale(0.7);
+}
+
+/* MODAL */
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+}
+
+.modal-form {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.modal-form h3 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.modal-form input {
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.modal-form button {
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.modal-form button[type="submit"] {
+    background: #0d6efd;
+    color: white;
+}
+
+.modal-form button[type="submit"]:hover {
+    background: #0b5ed7;
+}
+
+.modal-form button[type="button"] {
+    background: #ccc;
+}
+
+/* MOBILE */
+@media (max-width: 576px) {
+    .team-hero h1 {
+        font-size: 2rem;
+    }
+
+    .team-image {
+        height: 250px;
+    }
+
+    .admin-controls {
+        top: 5px;
+        right: 5px;
+    }
+}
