@@ -2,13 +2,13 @@ name: The CGEC Times Weekly Newsletter
 
 on:
   schedule:
-    # UTC সময় অনুযায়ী প্রতি রোববার সকাল ৯টায় (IST দুপুর ২:৩০) রান হবে
+    # UTC সময় অনুযায়ী প্রতি রোববার সকাল ৯টায় (IST দুপুর ২:৩০) রান হবে
     - cron: '0 9 * * 0'
-  workflow_dispatch: # চাইলে GitHub ওয়েবসাইট থেকে ক্লিক করে ম্যানুয়ালিও রান করতে পারবেন
+  workflow_dispatch: # GitHub ওয়েবসাইট থেকে ম্যানুয়ালি রান করার জন্য
 
 jobs:
   send-newsletter:
-    runs-runs-on: ubuntu-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout Code
