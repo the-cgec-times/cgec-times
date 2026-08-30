@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { supabase } from "../supabase";
 
+
 const DEFAULT_CATEGORIES = [
   "ESPERANZA 2K26",
   "TECHNOLOGY",
@@ -79,12 +80,13 @@ const AdminDashboard = () => {
         .from("news")
         .insert([payload]);
 
-      if (error) {
-        alert("Insert failed");
-      } else {
-        alert("News Added!");
-        navigate("/news");
-      }
+     if (error) {
+  console.error("Supabase Error:", error);
+  alert(`Insert failed: ${error.message}`);
+} else {
+  alert("News Added!");
+  navigate("/news");
+}
     }
   };
 
