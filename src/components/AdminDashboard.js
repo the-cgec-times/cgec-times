@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import { supabase } from "../supabase"; 
+import { supabase } from "../supabase";
+
+const DEFAULT_CATEGORIES = [
+  "ESPERANZA 2K26",
+  "TECHNOLOGY",
+  "SPORTS",
+  "CULTURAL",
+  "CREATIVE PENS"
+];
 
 const AdminDashboard = () => {
   const location = useLocation();
@@ -11,67 +19,74 @@ const AdminDashboard = () => {
   const [formData, setFormData] = useState({
     title: "",
     date: "",
-    category: "ESPERANZA 2K25",
+    category: "ESPERANZA 2K26",
     content: "",
     image: "",
     newsUrl: ""
   });
 
+  const [customCategory, setCustomCategory] = useState("");
+
   useEffect(() => {
     if (editItem) {
-      setFormData(editItem);
+      const isDefault = DEFAULT_CATEGORIES.includes(editItem.category);
+      if (isDefault) {
+        setFormData(editItem);
+      } else {
+        setFormData({ ...editItem, category: "OTHERS" });
+        setCustomCategory(editItem.category || "");
+      }
     }
   }, [editItem]);
 
- const handleSubmit = async (e) => {
-  e.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
 
-  if (editItem) {
-    // 🔥 UPDATE
-    const { error } = await supabase
-      .from("news")
-      .update({
-        title: formData.title,
-        content: formData.content,
-        category: formData.category,
-        date: formData.date,
-        image: formData.image
-      })
-      .eq("id", editItem.id);
+    const finalCategory = formData.category === "OTHERS" 
+      ? customCategory.trim() 
+      : formData.category;
 
-    if (error) {
-      alert("Update failed");
-    } else {
-      alert("News Updated!");
-      navigate("/news");
+    if (!finalCategory) {
+      alert("Please enter a category name");
+      return;
     }
 
-  } else {
-    // 🔥 INSERT
-    const { error } = await supabase.from("news").insert([
-      {
-        title: formData.title,
-        content: formData.content,
-        category: formData.category,
-        date: formData.date,
-        image: formData.image
+    const payload = {
+      title: formData.title,
+      content: formData.content,
+      category: finalCategory,
+      date: formData.date,
+      image: formData.image,
+      newsUrl: formData.newsUrl
+    };
+
+    if (editItem) {
+      //  UPDATE
+      const { error } = await supabase
+        .from("news")
+        .update(payload)
+        .eq("id", editItem.id);
+
+      if (error) {
+        alert("Update failed");
+      } else {
+        alert("News Updated!");
+        navigate("/news");
       }
-    ]);
-
-    if (error) {
-      alert("Insert failed");
     } else {
-      alert("News Added!");
-      navigate("/news");
+      //  INSERT
+      const { error } = await supabase
+        .from("news")
+        .insert([payload]);
+
+      if (error) {
+        alert("Insert failed");
+      } else {
+        alert("News Added!");
+        navigate("/news");
+      }
     }
-  }
-};
-
-
-
-
-
-
+  };
 
   return (
     <div className="container mt-5 pt-5 mb-5">
@@ -92,7 +107,7 @@ const AdminDashboard = () => {
                 className="form-control border-0 bg-light p-3" 
                 placeholder="Enter news title"
                 value={formData.title} 
-                onChange={e => setFormData({...formData, title: e.target.value})} 
+                onChange={e => setFormData({ ...formData, title: e.target.value })} 
                 required 
               />
             </div>
@@ -104,7 +119,7 @@ const AdminDashboard = () => {
                 className="form-control border-0 bg-light p-3" 
                 placeholder="e.g. 25th March, 2025"
                 value={formData.date} 
-                onChange={e => setFormData({...formData, date: e.target.value})} 
+                onChange={e => setFormData({ ...formData, date: e.target.value })} 
                 required 
               />
             </div>
@@ -114,14 +129,26 @@ const AdminDashboard = () => {
               <select 
                 className="form-select border-0 bg-light p-3" 
                 value={formData.category} 
-                onChange={e => setFormData({...formData, category: e.target.value})}
+                onChange={e => setFormData({ ...formData, category: e.target.value })}
               >
-                <option value="ESPERANZA 2K25">ESPERANZA 2K26</option>
-                <option value="TECHNOLOGY">TECHNOLOGY</option>
-                <option value="SPORTS">SPORTS</option>
-                <option value="CULTURAL">CULTURAL</option>
-                <option value="CREATIVE PENS">CREATIVE PENS</option>
+                {DEFAULT_CATEGORIES.map((cat, index) => (
+                  <option key={index} value={cat}>{cat}</option>
+                ))}
+                <option value="OTHERS">OTHERS (Custom)</option>
               </select>
+
+              {formData.category === "OTHERS" && (
+                <div className="mt-2">
+                  <input 
+                    type="text" 
+                    className="form-control border-0 bg-light p-3" 
+                    placeholder="Enter custom category name"
+                    value={customCategory} 
+                    onChange={e => setCustomCategory(e.target.value)} 
+                    required 
+                  />
+                </div>
+              )}
             </div>
 
             <div className="col-md-6 mb-3">
@@ -131,7 +158,7 @@ const AdminDashboard = () => {
                 className="form-control border-0 bg-light p-3" 
                 placeholder="https://example.com/"
                 value={formData.image} 
-                onChange={e => setFormData({...formData, image: e.target.value})} 
+                onChange={e => setFormData({ ...formData, image: e.target.value })} 
                 required 
               />
               <small className="text-muted">Direct link to the image</small>
@@ -143,8 +170,8 @@ const AdminDashboard = () => {
                 type="text" 
                 className="form-control border-0 bg-light p-3" 
                 placeholder="e.g. Instagram or Web Link"
-                value={formData.newsUrl} 
-                onChange={e => setFormData({...formData, newsUrl: e.target.value})} 
+                value={formData.newsUrl || ""} 
+                onChange={e => setFormData({ ...formData, newsUrl: e.target.value })} 
               />
             </div>
 
@@ -155,7 +182,7 @@ const AdminDashboard = () => {
                 rows="6" 
                 placeholder="Write the full story here..."
                 value={formData.content} 
-                onChange={e => setFormData({...formData, content: e.target.value})} 
+                onChange={e => setFormData({ ...formData, content: e.target.value })} 
                 required 
               ></textarea>
             </div>
@@ -173,7 +200,6 @@ const AdminDashboard = () => {
               Cancel
             </button>
           </div>
-
         </form>
       </div>
     </div>

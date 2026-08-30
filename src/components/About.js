@@ -5,15 +5,7 @@ import backgroundImage from "./photos/cgec_acdemic.jpeg";
 import clgLogo from "./photos/clgLogo.png";
 import { supabase } from "../supabase";
 
-// 📌 আপনার ওয়েবসাইট ওপেন হওয়ার সাথে যে পোস্টারটি দেখাবে সেটির ছবি এখানে ইম্পোর্ট করুন
-// (বা সরাসরি অনলাইন লিঙ্কের URL ব্যবহার করতে পারেন)
-import mainPosterImg from "./photos/sih_poster.jpeg"; 
-
 const BackgroundBox = () => {
-  // ===== 1. Main Website Pop-up Poster State =====
-  const [showMainPoster, setShowMainPoster] = useState(true);
-
-  // ===== 2. Database Events & Admin States =====
   const [events, setEvents] = useState([]);
   const [isAdmin, setIsAdmin] = useState(false);
 
@@ -116,30 +108,6 @@ const BackgroundBox = () => {
 
   return (
     <div className="container-fluid p-0 about-wrapper">
-      
-      {/* ===== 🎯 MAIN WEBSITE POP-UP POSTER (PAGE LOAD-E OPEN HOBE) ===== */}
-      {showMainPoster && (
-        <div className="sih-fullscreen-overlay">
-          {/* Top Right Floating Close Button */}
-          <button 
-            className="sih-close-btn" 
-            onClick={() => setShowMainPoster(false)} 
-            aria-label="Close"
-          >
-            ✕ Close
-          </button>
-
-          {/* Poster Box */}
-          <div className="sih-poster-wrapper">
-            <img 
-              src={mainPosterImg} 
-              alt="Website Announcement Poster" 
-              className="sih-fullscreen-img"
-            />
-          </div>
-        </div>
-      )}
-
       {/* Admin Control Bar */}
       {isAdmin && (
         <div className="container py-3 text-end">
